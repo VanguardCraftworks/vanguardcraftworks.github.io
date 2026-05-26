@@ -1,0 +1,55 @@
+<svg width="100%" viewBox="0 0 680 480" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>Vanguard Codex Icon</title>
+<desc>Gold shield with V and spear</desc>
+<defs>
+  <linearGradient id="goldMain" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#F5D78E"/>
+    <stop offset="30%" style="stop-color:#D4A017"/>
+    <stop offset="60%" style="stop-color:#F0C040"/>
+    <stop offset="100%" style="stop-color:#A87820"/>
+  </linearGradient>
+  <linearGradient id="goldEdge" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#F8E4A0"/>
+    <stop offset="50%" style="stop-color:#C49010"/>
+    <stop offset="100%" style="stop-color:#A07010"/>
+  </linearGradient>
+  <linearGradient id="goldShield" x1="0%" y1="0%" x2="60%" y2="100%">
+    <stop offset="0%" style="stop-color:#F5D98C"/>
+    <stop offset="40%" style="stop-color:#C8960C"/>
+    <stop offset="100%" style="stop-color:#8A6010"/>
+  </linearGradient>
+  <linearGradient id="spearGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" style="stop-color:#A87010"/>
+    <stop offset="30%" style="stop-color:#F8E090"/>
+    <stop offset="60%" style="stop-color:#D4A017"/>
+    <stop offset="100%" style="stop-color:#8A6010"/>
+  </linearGradient>
+</defs>
+
+<!-- Shield border -->
+<path d="M340,82 L480,132 L480,310 Q480,430 340,462 Q200,430 200,310 L200,132 Z"
+  fill="none" stroke="url(#goldEdge)" stroke-width="6" stroke-linejoin="round"/>
+
+<!-- Shield fill -->
+<path d="M340,90 L472,137 L472,310 Q472,422 340,452 Q208,422 208,310 L208,137 Z"
+  fill="#1a1408" stroke="url(#goldMain)" stroke-width="2"/>
+
+<!-- Shield inner bevel -->
+<path d="M340,106 L458,148 L458,310 Q458,408 340,432 Q222,408 222,310 L222,148 Z"
+  fill="none" stroke="url(#goldMain)" stroke-width="1.5" opacity="0.5"/>
+
+<!-- V arms -->
+<path d="M262,157 L285,157 L340,330 L395,157 L418,157 L340,385 Z"
+  fill="url(#goldShield)" stroke="url(#goldEdge)" stroke-width="1"/>
+
+<!-- SPEAR SHAFT -->
+<rect x="337" y="130" width="6" height="272" fill="url(#spearGrad)" rx="1.5"/>
+
+<!-- Spear tip -->
+<path d="M340,55 L330,120 L337,112 L337,130 L343,130 L343,112 L350,120 Z"
+  fill="url(#goldMain)" stroke="url(#goldEdge)" stroke-width="1"/>
+
+<!-- Spear butt -->
+<path d="M337,400 L340,415 L343,400 Z" fill="url(#goldMain)"/>
+
+</svg>
