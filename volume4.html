@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Volume IV — Apocrypha · Vanguard Craftworks</title>
+  <title>Volume IV &mdash; Apocrypha &middot; Vanguard Craftworks</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -37,12 +37,16 @@
     .book-name{flex:1;}
     .book-status{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tan);display:flex;align-items:center;gap:0.4rem;}
     .decisions-section{margin-top:4rem;padding-top:4rem;border-top:1px solid rgba(197,168,76,0.2);}
+    .vol-nav{margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(197,168,76,0.2);display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
+    .vol-nav a{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;color:var(--gold);transition:color 0.3s;}
+    .vol-nav a:hover{color:var(--gold-light);}
+    .vol-nav a.active{color:var(--cream);}
+    .vol-nav .sep{color:var(--leather);}
     .note-box{border:1px solid rgba(197,168,76,0.2);background:rgba(197,168,76,0.04);padding:1.5rem;margin-bottom:2rem;font-style:italic;font-size:0.95rem;}
-    .back-btn{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.9rem 2.5rem;text-decoration:none;transition:all 0.3s;display:inline-block;background:transparent;color:var(--cream);border:1px solid rgba(197,168,76,0.4);margin-top:3rem;}
-    .back-btn:hover{border-color:var(--gold);color:var(--gold-light);}
+    .subsection-label{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.3em;color:var(--tan);text-transform:uppercase;margin:2rem 0 0.5rem;display:block;padding-bottom:0.5rem;border-bottom:1px solid rgba(197,168,76,0.15);}
     footer{padding:2.5rem;text-align:center;border-top:1px solid rgba(197,168,76,0.1);margin-top:4rem;}
     footer p{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;color:var(--tan);text-transform:uppercase;margin:0;}
-    @media(max-width:768px){header{padding:1rem 1.5rem;}nav a{margin-left:1rem;font-size:0.65rem;}}
+    @media(max-width:768px){header{padding:1rem 1.5rem;}nav a{margin-left:1rem;font-size:0.65rem;}.vol-nav{gap:1rem;}}
   </style>
 </head>
 <body>
@@ -54,24 +58,19 @@
       <a href="index.html#follow">Follow</a>
     </nav>
   </header>
-
   <div class="page-hero">
-    <div class="volume-label">Volume IV · The Vanguard Codex</div>
+    <div class="volume-label">Volume IV &middot; The Vanguard Codex</div>
     <h1>Apocrypha</h1>
     <div class="hero-divider"></div>
-    <p class="volume-subtitle">The deuterocanonical books — present in the Septuagint, honored by the early church, and too often left out entirely.</p>
+    <p class="volume-subtitle">The deuterocanonical books &mdash; ordered according to Martin Luther's 1535 Apocrypha, the first deliberate canonical organization of these texts.</p>
   </div>
-
   <div class="main-content">
-
     <span class="section-label">Production Status</span>
     <h2 class="section-title">Books of the Apocrypha</h2>
     <div class="ornament-line"></div>
-
     <div class="note-box">
-      Note: The final canonical ordering for this volume is still being researched. Book order and translation sourcing will be updated as decisions are finalized. This page reflects current planning, not final choices.
+      This volume follows the ordering of Martin Luther's 1535 Bible &mdash; the first time these books were deliberately separated and organized as a distinct canonical unit. Luther's heading: <em>"These are books not held equal to Holy Scripture, yet useful and good to read."</em> Primary source verified at archive.org/details/lutherbibel1535, page 881.
     </div>
-
     <div class="status-legend">
       <div class="legend-item"><div class="status-dot dot-red"></div> Not Started</div>
       <div class="legend-item"><div class="status-dot dot-orange"></div> Ripped to TXT</div>
@@ -79,39 +78,32 @@
       <div class="legend-item"><div class="status-dot dot-blue"></div> In LaTeX</div>
       <div class="legend-item"><div class="status-dot dot-green"></div> Complete</div>
     </div>
-
     <ul class="book-list">
-      <li class="book-item"><span class="book-number">1</span><span class="book-name">1 Esdras</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
-      <li class="book-item"><span class="book-number">2</span><span class="book-name">2 Esdras</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
+      <li class="book-item"><span class="book-number">1</span><span class="book-name">Judith</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
+      <li class="book-item"><span class="book-number">2</span><span class="book-name">Wisdom of Solomon</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
       <li class="book-item"><span class="book-number">3</span><span class="book-name">Tobit</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
-      <li class="book-item"><span class="book-number">4</span><span class="book-name">Judith</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
-      <li class="book-item"><span class="book-number">5</span><span class="book-name">1 Maccabees</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
-      <li class="book-item"><span class="book-number">6</span><span class="book-name">2 Maccabees</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
-      <li class="book-item"><span class="book-number">7</span><span class="book-name">Wisdom of Solomon</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
-      <li class="book-item"><span class="book-number">8</span><span class="book-name">Sirach</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
-      <li class="book-item"><span class="book-number">9</span><span class="book-name">Baruch</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
-      <li class="book-item"><span class="book-number">10</span><span class="book-name">Letter of Jeremiah</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
-      <li class="book-item"><span class="book-number">11</span><span class="book-name">Prayer of Azariah</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
-      <li class="book-item"><span class="book-number">12</span><span class="book-name">Susanna</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
-      <li class="book-item"><span class="book-number">13</span><span class="book-name">Bel and the Dragon</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
-      <li class="book-item"><span class="book-number">14</span><span class="book-name">Prayer of Manasseh</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
-      <li class="book-item"><span class="book-number">15</span><span class="book-name">Psalm 151</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
+      <li class="book-item"><span class="book-number">4</span><span class="book-name">Sirach</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
+      <li class="book-item"><span class="book-number">5</span><span class="book-name">Baruch</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
+      <li class="book-item"><span class="book-number">6</span><span class="book-name">1 Maccabees</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
+      <li class="book-item"><span class="book-number">7</span><span class="book-name">2 Maccabees</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
+      <li class="book-item"><span class="book-number">8</span><span class="book-name">Additions to Esther</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
+      <li class="book-item"><span class="book-number">9</span><span class="book-name">Prayer of Azariah</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
+      <li class="book-item"><span class="book-number">10</span><span class="book-name">Song of the Three Young Men</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
+      <li class="book-item"><span class="book-number">11</span><span class="book-name">Susanna</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
+      <li class="book-item"><span class="book-number">12</span><span class="book-name">Bel and the Dragon</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
     </ul>
-
     <div class="decisions-section">
       <span class="section-label">On This Volume</span>
       <h2 class="section-title">Ordering &amp; Translation Decisions</h2>
       <div class="ornament-line"></div>
-      <p>The Apocrypha represents the most complex canonical decisions in the entire Codex project. These books appear in the Septuagint — the Greek translation of the Hebrew scriptures used widely in the first century — and were part of the Christian Bible for over a thousand years before being removed during the Reformation.</p>
-      <p>The Vanguard Codex includes them not as an endorsement of any particular theological tradition, but as an honest attempt to represent what the earliest Christian communities actually had access to. These books were on the shelf. They deserve to be here.</p>
-      <p>Translation sourcing for this volume is still being finalized. The NLT Catholic Edition covers the standard deuterocanon. Books outside that set will likely draw from the NRSV, which has the most complete coverage of the expanded Orthodox canon. Any translation mixing will be documented clearly.</p>
+      <p>The Apocrypha represents the most complex canonical decisions in the entire Codex project. These books appear in the Septuagint &mdash; the Greek translation of the Hebrew scriptures used widely in the first century &mdash; and were part of the Christian Bible for over a thousand years before being separated during the Reformation.</p>
+      <p>Martin Luther was the first person to deliberately organize these books as a distinct unit, which is why his 1535 ordering was chosen as the authority for this volume. He did it on purpose, thoughtfully, and history has followed his lead. The Additions to Esther and Daniel are broken out as individual books rather than grouped entries, consistent with the formatting approach used throughout the Codex.</p>
+      <p>Translation sourcing: the NLT Catholic Edition covers Tobit, Judith, Maccabees, Wisdom, Sirach, and Baruch. The remaining books draw from the NRSV. Each book's translation source is noted on its opening page.</p>
     </div>
-
-    <a href="index.html" class="back-btn">← Back to Home</a>
+<div class="vol-nav"><a href="index.html">Home</a><span class="sep">|</span><a href="volume1.html">Vol I</a><span class="sep">|</span><a href="volume2.html">Vol II</a><span class="sep">|</span><a href="volume3.html">Vol III</a><span class="sep">|</span><a href="volume4.html" class="active">Vol IV</a><span class="sep">|</span><a href="volume5.html">Vol V</a></div>
   </div>
-
   <footer>
-    <p>Vanguard Craftworks · High Desert, Southern California · 2026</p>
+    <p>Vanguard Craftworks &middot; High Desert, Southern California &middot; 2026</p>
   </footer>
 </body>
 </html>

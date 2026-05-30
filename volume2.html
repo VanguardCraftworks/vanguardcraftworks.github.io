@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Volume II — Nevi'im · Vanguard Craftworks</title>
+  <title>Volume II &mdash; Nevi'im &middot; Vanguard Craftworks</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -36,13 +36,17 @@
     .book-number{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.15em;color:var(--tan);min-width:2rem;text-align:right;}
     .book-name{flex:1;}
     .book-status{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tan);display:flex;align-items:center;gap:0.4rem;}
-    .subsection-label{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.3em;color:var(--tan);text-transform:uppercase;margin:2rem 0 0.5rem;display:block;padding-bottom:0.5rem;border-bottom:1px solid rgba(197,168,76,0.15);}
     .decisions-section{margin-top:4rem;padding-top:4rem;border-top:1px solid rgba(197,168,76,0.2);}
-    .back-btn{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.9rem 2.5rem;text-decoration:none;transition:all 0.3s;display:inline-block;background:transparent;color:var(--cream);border:1px solid rgba(197,168,76,0.4);margin-top:3rem;}
-    .back-btn:hover{border-color:var(--gold);color:var(--gold-light);}
+    .vol-nav{margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(197,168,76,0.2);display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
+    .vol-nav a{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;color:var(--gold);transition:color 0.3s;}
+    .vol-nav a:hover{color:var(--gold-light);}
+    .vol-nav a.active{color:var(--cream);}
+    .vol-nav .sep{color:var(--leather);}
+    .note-box{border:1px solid rgba(197,168,76,0.2);background:rgba(197,168,76,0.04);padding:1.5rem;margin-bottom:2rem;font-style:italic;font-size:0.95rem;}
+    .subsection-label{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.3em;color:var(--tan);text-transform:uppercase;margin:2rem 0 0.5rem;display:block;padding-bottom:0.5rem;border-bottom:1px solid rgba(197,168,76,0.15);}
     footer{padding:2.5rem;text-align:center;border-top:1px solid rgba(197,168,76,0.1);margin-top:4rem;}
     footer p{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;color:var(--tan);text-transform:uppercase;margin:0;}
-    @media(max-width:768px){header{padding:1rem 1.5rem;}nav a{margin-left:1rem;font-size:0.65rem;}}
+    @media(max-width:768px){header{padding:1rem 1.5rem;}nav a{margin-left:1rem;font-size:0.65rem;}.vol-nav{gap:1rem;}}
   </style>
 </head>
 <body>
@@ -54,20 +58,16 @@
       <a href="index.html#follow">Follow</a>
     </nav>
   </header>
-
   <div class="page-hero">
-    <div class="volume-label">Volume II · The Vanguard Codex</div>
+    <div class="volume-label">Volume II &middot; The Vanguard Codex</div>
     <h1>Nevi'im</h1>
     <div class="hero-divider"></div>
-    <p class="volume-subtitle">The Prophets — Former and Latter — ordered according to the Babylonian Talmud tractate Baba Bathra.</p>
+    <p class="volume-subtitle">The Prophets &mdash; Former and Latter &mdash; ordered according to the Babylonian Talmud tractate Baba Bathra.</p>
   </div>
-
   <div class="main-content">
-
     <span class="section-label">Production Status</span>
     <h2 class="section-title">Books of the Nevi'im</h2>
     <div class="ornament-line"></div>
-
     <div class="status-legend">
       <div class="legend-item"><div class="status-dot dot-red"></div> Not Started</div>
       <div class="legend-item"><div class="status-dot dot-orange"></div> Ripped to TXT</div>
@@ -75,7 +75,6 @@
       <div class="legend-item"><div class="status-dot dot-blue"></div> In LaTeX</div>
       <div class="legend-item"><div class="status-dot dot-green"></div> Complete</div>
     </div>
-
     <span class="subsection-label">Former Prophets</span>
     <ul class="book-list">
       <li class="book-item"><span class="book-number">1</span><span class="book-name">Joshua</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
@@ -85,14 +84,12 @@
       <li class="book-item"><span class="book-number">5</span><span class="book-name">1 Kings</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
       <li class="book-item"><span class="book-number">6</span><span class="book-name">2 Kings</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
     </ul>
-
     <span class="subsection-label">Latter Prophets</span>
     <ul class="book-list">
-      <li class="book-item"><span class="book-number">7</span><span class="book-name">Isaiah</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
-      <li class="book-item"><span class="book-number">8</span><span class="book-name">Jeremiah</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
-      <li class="book-item"><span class="book-number">9</span><span class="book-name">Ezekiel</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
+      <li class="book-item"><span class="book-number">7</span><span class="book-name">Jeremiah</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
+      <li class="book-item"><span class="book-number">8</span><span class="book-name">Ezekiel</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
+      <li class="book-item"><span class="book-number">9</span><span class="book-name">Isaiah</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
     </ul>
-
     <span class="subsection-label">The Twelve</span>
     <ul class="book-list">
       <li class="book-item"><span class="book-number">10</span><span class="book-name">Hosea</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
@@ -108,20 +105,17 @@
       <li class="book-item"><span class="book-number">20</span><span class="book-name">Zechariah</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
       <li class="book-item"><span class="book-number">21</span><span class="book-name">Malachi</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
     </ul>
-
     <div class="decisions-section">
       <span class="section-label">On This Volume</span>
       <h2 class="section-title">Ordering &amp; Translation Decisions</h2>
       <div class="ornament-line"></div>
-      <p>The Nevi'im follows the ordering found in the Babylonian Talmud tractate Baba Bathra 14b — one of the oldest documented canonical sequences for the Hebrew prophetic books. The Former Prophets (Joshua through Kings) narrate the history of Israel from the conquest through the exile. The Latter Prophets (Isaiah, Jeremiah, Ezekiel, and The Twelve) carry the prophetic voice of that same era.</p>
-      <p>The Twelve minor prophets are treated as a single unit — as they were in the ancient tradition — rather than being numbered individually in the volume structure.</p>
+      <p>The Nevi'im follows the ordering found in the Babylonian Talmud tractate Baba Bathra 14b &mdash; one of the oldest documented canonical sequences for the Hebrew prophetic books. The Former Prophets (Joshua through Kings) narrate the history of Israel from the conquest through the exile. The Latter Prophets (Jeremiah, Ezekiel, Isaiah, and The Twelve) carry the prophetic voice of that same era.</p>
+      <p>Note the ordering of the major prophets &mdash; Jeremiah, then Ezekiel, then Isaiah. This is the Baba Bathra sequence, which differs from most modern Bibles that place Isaiah first. The Twelve minor prophets are treated as a single unit in the ancient tradition.</p>
     </div>
-
-    <a href="index.html" class="back-btn">← Back to Home</a>
+<div class="vol-nav"><a href="index.html">Home</a><span class="sep">|</span><a href="volume1.html">Vol I</a><span class="sep">|</span><a href="volume2.html" class="active">Vol II</a><span class="sep">|</span><a href="volume3.html">Vol III</a><span class="sep">|</span><a href="volume4.html">Vol IV</a><span class="sep">|</span><a href="volume5.html">Vol V</a></div>
   </div>
-
   <footer>
-    <p>Vanguard Craftworks · High Desert, Southern California · 2026</p>
+    <p>Vanguard Craftworks &middot; High Desert, Southern California &middot; 2026</p>
   </footer>
 </body>
 </html>

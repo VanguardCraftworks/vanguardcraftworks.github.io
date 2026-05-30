@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Volume V — New Testament · Vanguard Craftworks</title>
+  <title>Volume V &mdash; New Testament &middot; Vanguard Craftworks</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -37,11 +37,16 @@
     .book-name{flex:1;}
     .book-status{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tan);display:flex;align-items:center;gap:0.4rem;}
     .decisions-section{margin-top:4rem;padding-top:4rem;border-top:1px solid rgba(197,168,76,0.2);}
-    .back-btn{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;padding:0.9rem 2.5rem;text-decoration:none;transition:all 0.3s;display:inline-block;background:transparent;color:var(--cream);border:1px solid rgba(197,168,76,0.4);margin-top:3rem;}
-    .back-btn:hover{border-color:var(--gold);color:var(--gold-light);}
+    .vol-nav{margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(197,168,76,0.2);display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
+    .vol-nav a{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;color:var(--gold);transition:color 0.3s;}
+    .vol-nav a:hover{color:var(--gold-light);}
+    .vol-nav a.active{color:var(--cream);}
+    .vol-nav .sep{color:var(--leather);}
+    .note-box{border:1px solid rgba(197,168,76,0.2);background:rgba(197,168,76,0.04);padding:1.5rem;margin-bottom:2rem;font-style:italic;font-size:0.95rem;}
+    .subsection-label{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.3em;color:var(--tan);text-transform:uppercase;margin:2rem 0 0.5rem;display:block;padding-bottom:0.5rem;border-bottom:1px solid rgba(197,168,76,0.15);}
     footer{padding:2.5rem;text-align:center;border-top:1px solid rgba(197,168,76,0.1);margin-top:4rem;}
     footer p{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;color:var(--tan);text-transform:uppercase;margin:0;}
-    @media(max-width:768px){header{padding:1rem 1.5rem;}nav a{margin-left:1rem;font-size:0.65rem;}}
+    @media(max-width:768px){header{padding:1rem 1.5rem;}nav a{margin-left:1rem;font-size:0.65rem;}.vol-nav{gap:1rem;}}
   </style>
 </head>
 <body>
@@ -53,20 +58,16 @@
       <a href="index.html#follow">Follow</a>
     </nav>
   </header>
-
   <div class="page-hero">
-    <div class="volume-label">Volume V · The Vanguard Codex</div>
+    <div class="volume-label">Volume V &middot; The Vanguard Codex</div>
     <h1>New Testament</h1>
     <div class="hero-divider"></div>
-    <p class="volume-subtitle">Twenty-seven books ordered according to Codex Vaticanus — one of the oldest complete Bible manuscripts in existence, dating to approximately 325 AD.</p>
+    <p class="volume-subtitle">Twenty-seven books ordered according to Codex Vaticanus &mdash; one of the oldest complete Bible manuscripts in existence, dating to approximately 325 AD.</p>
   </div>
-
   <div class="main-content">
-
     <span class="section-label">Production Status</span>
     <h2 class="section-title">Books of the New Testament</h2>
     <div class="ornament-line"></div>
-
     <div class="status-legend">
       <div class="legend-item"><div class="status-dot dot-red"></div> Not Started</div>
       <div class="legend-item"><div class="status-dot dot-orange"></div> Ripped to TXT</div>
@@ -74,7 +75,6 @@
       <div class="legend-item"><div class="status-dot dot-blue"></div> In LaTeX</div>
       <div class="legend-item"><div class="status-dot dot-green"></div> Complete</div>
     </div>
-
     <ul class="book-list">
       <li class="book-item"><span class="book-number">1</span><span class="book-name">Matthew</span><span class="book-status"><div class="status-dot dot-blue"></div> In LaTeX</span></li>
       <li class="book-item"><span class="book-number">2</span><span class="book-name">Mark</span><span class="book-status"><div class="status-dot dot-blue"></div> In LaTeX</span></li>
@@ -104,21 +104,18 @@
       <li class="book-item"><span class="book-number">26</span><span class="book-name">Philemon</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
       <li class="book-item"><span class="book-number">27</span><span class="book-name">Revelation</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
     </ul>
-
     <div class="decisions-section">
       <span class="section-label">On This Volume</span>
       <h2 class="section-title">Ordering &amp; Translation Decisions</h2>
       <div class="ornament-line"></div>
       <p>The New Testament follows the ordering found in Codex Vaticanus, one of the oldest complete manuscripts of the Christian Bible, produced in the early 4th century and housed today in the Vatican Apostolic Library. This is not the order found in most modern Bibles, which typically place Paul's letters before the General Epistles.</p>
-      <p>In Codex Vaticanus, the General Epistles — James, Peter, John, and Jude — follow Acts directly, before Paul's letters. This reflects an older organizational logic that groups the letters of the Jerusalem apostles together rather than leading with Paul. It is a small change with significant theological implications for how a reader encounters the early church.</p>
+      <p>In Codex Vaticanus, the General Epistles &mdash; James, Peter, John, and Jude &mdash; follow Acts directly, before Paul's letters. This reflects an older organizational logic that groups the letters of the Jerusalem apostles together rather than leading with Paul. It is a small change with significant theological implications for how a reader encounters the early church.</p>
       <p>This volume is currently in production. Matthew, Mark, Luke, John, and Acts have been typeset and compiled. The remaining 22 books are in progress.</p>
     </div>
-
-    <a href="index.html" class="back-btn">← Back to Home</a>
+<div class="vol-nav"><a href="index.html">Home</a><span class="sep">|</span><a href="volume1.html">Vol I</a><span class="sep">|</span><a href="volume2.html">Vol II</a><span class="sep">|</span><a href="volume3.html">Vol III</a><span class="sep">|</span><a href="volume4.html">Vol IV</a><span class="sep">|</span><a href="volume5.html" class="active">Vol V</a></div>
   </div>
-
   <footer>
-    <p>Vanguard Craftworks · High Desert, Southern California · 2026</p>
+    <p>Vanguard Craftworks &middot; High Desert, Southern California &middot; 2026</p>
   </footer>
 </body>
 </html>
