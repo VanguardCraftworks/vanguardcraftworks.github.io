@@ -10,6 +10,7 @@
   <style>
     :root {
       --dark: #1a1008;
+      --mid: #231208;
       --leather: #2c1a0e;
       --tan: #8b5e3c;
       --gold: #c9a84c;
@@ -97,6 +98,17 @@
       text-align: center;
       padding: 6rem 2rem 4rem;
       position: relative;
+      background-image: url('Hero_Background.jpg');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 5, 2, 0.72);
+      pointer-events: none;
     }
 
     .hero::after {
@@ -276,7 +288,7 @@
 
     /* ======= CODEX SECTION ======= */
     .codex-section {
-      background: var(--leather);
+      background: var(--mid);
       border-top: 1px solid rgba(197, 168, 76, 0.2);
       border-bottom: 1px solid rgba(197, 168, 76, 0.2);
     }
@@ -316,45 +328,29 @@
       padding-top: 0.2rem;
     }
 
-    .codex-preview {
-      background: #0d0804;
-      border: 1px solid rgba(197, 168, 76, 0.2);
-      padding: 2rem;
-      font-style: italic;
-      color: var(--cream-dim);
-      font-size: 1rem;
-      line-height: 1.8;
+    .codex-preview-wrapper {
       position: relative;
     }
 
-    .codex-preview::before {
-      content: 'From the Vanguard Codex';
+    .codex-preview-label {
       position: absolute;
       top: -0.6rem;
       left: 1.5rem;
-      background: var(--leather);
+      background: var(--mid);
       padding: 0 0.5rem;
       font-family: 'Cinzel', serif;
       font-size: 0.6rem;
       letter-spacing: 0.2em;
       color: var(--gold);
       text-transform: uppercase;
-      font-style: normal;
+      z-index: 1;
     }
 
-    .preview-verse {
-      color: var(--red);
-    }
-
-    .preview-drop {
-      float: left;
-      font-size: 3.5rem;
-      line-height: 0.8;
-      margin-right: 0.1rem;
-      margin-top: 0.1rem;
-      font-family: 'Cinzel', serif;
-      color: var(--gold);
-      font-weight: 700;
+    .codex-preview {
+      box-shadow: 0 12px 50px rgba(0,0,0,0.65), 0 2px 10px rgba(0,0,0,0.35);
+      border: 1px solid rgba(180, 160, 100, 0.3);
+      display: block;
+      width: 100%;
     }
 
     /* ======= VOLUMES ======= */
@@ -575,13 +571,9 @@
             <li><span class="spec-label">Status</span> Old Testament — in production</li>
           </ul>
         </div>
-        <div class="codex-preview">
-          <span class="preview-drop">I</span>n the beginning God created the heavens and the earth.
-          <sup style="font-size:0.65rem; color: #c9a84c;">2</sup>The earth was formless and empty,
-          and darkness covered the deep waters. And the Spirit of God was hovering over the surface of the waters.<br><br>
-          <span class="preview-verse">
-            <sup style="font-size:0.65rem;">15</sup>"It should be done, for we must carry out all that God requires."
-          </span>
+        <div class="codex-preview-wrapper">
+          <span class="codex-preview-label">From the Vanguard Codex</span>
+          <img src="Matthew_17_Preview.jpg" class="codex-preview" alt="Page 46 of the Vanguard Codex — Matthew 17, The Transfiguration" />
         </div>
       </div>
 	  <div style="margin-top: 2.5rem; text-align: center;">
