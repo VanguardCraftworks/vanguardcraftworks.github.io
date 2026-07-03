@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Read the Draft &middot; Vanguard Craftworks</title>
+  <link rel="icon" type="image/png" href="Vanguard_Codex_Logo_No_Text.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -107,6 +108,10 @@
       cursor: pointer;
       transition: color 0.3s;
       user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3em;
+      white-space: nowrap;
     }
 
     .nav-dropdown-toggle:hover { color: var(--gold-light); }
@@ -118,7 +123,7 @@
       right: 0;
       background: rgba(26,16,8,0.97);
       border: 1px solid rgba(197,168,76,0.2);
-      min-width: 160px;
+      min-width: 220px;
       z-index: 200;
     }
 
@@ -138,6 +143,8 @@
     }
 
     .nav-dropdown-menu a:hover { color: var(--gold-light); background: rgba(197,168,76,0.05); }
+    .vol-num { display: block; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--tan); margin-bottom: 0.1rem; }
+    .vol-name { display: block; font-size: 0.7rem; letter-spacing: 0.12em; color: inherit; }
 
     /* ======= PAGE HERO — leather texture banner ======= */
     .page-hero {
@@ -388,13 +395,13 @@
       <a href="index.html#codex">The Codex</a>
       <a href="index.html#craft">Craft</a>
       <div class="nav-dropdown">
-        <span class="nav-dropdown-toggle">Volumes ▾</span>
+        <span class="nav-dropdown-toggle">Volumes &#9660;</span>
         <div class="nav-dropdown-menu">
-          <a href="volume1.html">Vol. I — Torah</a>
-          <a href="volume2.html">Vol. II — Nevi'im</a>
-          <a href="volume3.html">Vol. III — Ketuvim</a>
-          <a href="volume4.html">Vol. IV — Apocrypha</a>
-          <a href="volume5.html">Vol. V — New Testament</a>
+          <a href="volume1.html"><span class="vol-num">Vol. I</span><span class="vol-name">Torah</span></a>
+          <a href="volume2.html"><span class="vol-num">Vol. II</span><span class="vol-name">Nevi&#700;im</span></a>
+          <a href="volume3.html"><span class="vol-num">Vol. III</span><span class="vol-name">Ketuvim</span></a>
+          <a href="volume4.html"><span class="vol-num">Vol. IV</span><span class="vol-name">Apocrypha</span></a>
+          <a href="volume5.html"><span class="vol-num">Vol. V</span><span class="vol-name">New Testament</span></a>
         </div>
       </div>
       <a href="read.html">Read the Draft</a>

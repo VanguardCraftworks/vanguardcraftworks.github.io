@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Volume IV &mdash; Apocrypha &middot; Vanguard Craftworks</title>
+  <link rel="icon" type="image/png" href="Vanguard_Codex_Logo_No_Text.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -19,12 +20,14 @@
     nav a { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--cream-dim); text-decoration: none; margin-left: 2.5rem; text-transform: uppercase; transition: color 0.3s; }
     nav a:hover { color: var(--gold-light); }
     .nav-dropdown { position: relative; margin-left: 2.5rem; }
-    .nav-dropdown-toggle { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--cream-dim); text-transform: uppercase; cursor: pointer; transition: color 0.3s; user-select: none; }
+    .nav-dropdown-toggle { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--cream-dim); text-transform: uppercase; cursor: pointer; transition: color 0.3s; user-select: none; display: inline-flex; align-items: center; gap: 0.3em; white-space: nowrap; }
     .nav-dropdown-toggle:hover { color: var(--gold-light); }
-    .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 0.75rem); right: 0; background: rgba(26,16,8,0.97); border: 1px solid rgba(197,168,76,0.2); min-width: 160px; z-index: 200; }
+    .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 0.75rem); right: 0; background: rgba(26,16,8,0.97); border: 1px solid rgba(197,168,76,0.2); min-width: 220px; z-index: 200; }
     .nav-dropdown:hover .nav-dropdown-menu { display: block; }
     .nav-dropdown-menu a { display: block; font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--cream-dim); text-decoration: none; padding: 0.6rem 1rem; text-transform: uppercase; transition: color 0.2s, background 0.2s; margin-left: 0; }
     .nav-dropdown-menu a:hover { color: var(--gold-light); background: rgba(197,168,76,0.05); }
+    .vol-num { display: block; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--tan); margin-bottom: 0.1rem; }
+    .vol-name { display: block; font-size: 0.7rem; letter-spacing: 0.12em; color: inherit; }
     .page-hero { min-height: 40vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 4rem; border-bottom: 1px solid rgba(197,168,76,0.2); background-image: url('Hero_Background.jpg'); background-size: cover; background-position: center; position: relative; }
     .page-hero::before { content: ''; position: absolute; inset: 0; background: rgba(10,5,2,0.78); pointer-events: none; }
     .page-hero > * { position: relative; z-index: 1; }
@@ -64,13 +67,13 @@
       <a href="index.html#codex">The Codex</a>
       <a href="index.html#craft">Craft</a>
       <div class="nav-dropdown">
-        <span class="nav-dropdown-toggle">Volumes ▾</span>
+        <span class="nav-dropdown-toggle">Volumes &#9660;</span>
         <div class="nav-dropdown-menu">
-          <a href="volume1.html">Vol. I — Torah</a>
-          <a href="volume2.html">Vol. II — Nevi'im</a>
-          <a href="volume3.html">Vol. III — Ketuvim</a>
-          <a href="volume4.html">Vol. IV — Apocrypha</a>
-          <a href="volume5.html">Vol. V — New Testament</a>
+          <a href="volume1.html"><span class="vol-num">Vol. I</span><span class="vol-name">Torah</span></a>
+          <a href="volume2.html"><span class="vol-num">Vol. II</span><span class="vol-name">Nevi&#700;im</span></a>
+          <a href="volume3.html"><span class="vol-num">Vol. III</span><span class="vol-name">Ketuvim</span></a>
+          <a href="volume4.html"><span class="vol-num">Vol. IV</span><span class="vol-name">Apocrypha</span></a>
+          <a href="volume5.html"><span class="vol-num">Vol. V</span><span class="vol-name">New Testament</span></a>
         </div>
       </div>
       <a href="read.html">Read the Draft</a>
