@@ -73,6 +73,11 @@
       text-transform: uppercase;
     }
 
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
     nav a {
       font-family: 'Cinzel', serif;
       font-size: 0.75rem;
@@ -86,6 +91,56 @@
 
     nav a:hover {
       color: var(--gold-light);
+    }
+
+    /* ======= DROPDOWN — Volumes ======= */
+    .nav-dropdown {
+      position: relative;
+      margin-left: 2.5rem;
+    }
+
+    .nav-dropdown-toggle {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--cream-dim);
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.3s;
+      user-select: none;
+    }
+
+    .nav-dropdown-toggle:hover { color: var(--gold-light); }
+
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.75rem);
+      right: 0;
+      background: rgba(26, 16, 8, 0.97);
+      border: 1px solid rgba(197, 168, 76, 0.2);
+      min-width: 160px;
+      z-index: 200;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+
+    .nav-dropdown-menu a {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--cream-dim);
+      text-decoration: none;
+      padding: 0.6rem 1rem;
+      text-transform: uppercase;
+      transition: color 0.2s, background 0.2s;
+      margin-left: 0;
+    }
+
+    .nav-dropdown-menu a:hover {
+      color: var(--gold-light);
+      background: rgba(197, 168, 76, 0.05);
     }
 
     /* ======= HERO ======= */
@@ -515,8 +570,23 @@
   <header>
     <div class="site-name">Vanguard Craftworks</div>
     <nav>
+      <!-- Nav order: The Codex | Craft | Volumes ▾ | Read the Draft | Follow -->
       <a href="#codex">The Codex</a>
       <a href="#craft">Craft</a>
+
+      <!-- Volumes dropdown -->
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-toggle">Volumes ▾</span>
+        <div class="nav-dropdown-menu">
+          <a href="volume1.html">Vol. I — Torah</a>
+          <a href="volume2.html">Vol. II — Nevi'im</a>
+          <a href="volume3.html">Vol. III — Ketuvim</a>
+          <a href="volume4.html">Vol. IV — Apocrypha</a>
+          <a href="volume5.html">Vol. V — New Testament</a>
+        </div>
+      </div>
+
+      <a href="read.html">Read the Draft</a>
       <a href="#follow">Follow</a>
     </nav>
   </header>

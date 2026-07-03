@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Read the Draft &middot; Vanguard Craftworks</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet" />
+
+  <!-- PDF.js — open source PDF renderer, no direct file links needed -->
+  <!-- This is loaded from a CDN so no local install required -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+
+  <style>
+
+    /* ======= COLOR VARIABLES =======
+       Matches the rest of the site exactly — see volume1.html for full notes
+    ======= */
+    :root {
+      --dark: #1a1008;
+      --mid: #231208;
+      --leather: #2c1a0e;
+      --tan: #8b5e3c;
+      --gold: #c9a84c;
+      --gold-light: #e8c87a;
+      --cream: #f5edd8;
+      --cream-dim: #e8dcc4;
+      --red: #8b1a1a;
+    }
+
+    /* ======= RESET & BASE ======= */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--dark);
+      color: var(--cream);
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 18px;
+      line-height: 1.7;
+      overflow-x: hidden;
+      /* Full height so viewer fills the screen */
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Grain overlay — matches rest of site */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* ======= HEADER ======= */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 1.2rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: linear-gradient(to bottom, rgba(26,16,8,0.98), rgba(26,16,8,0));
+    }
+
+    .site-name {
+      font-family: 'Cinzel', serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    /* ======= NAV ======= */
+    nav { display: flex; align-items: center; }
+
+    nav a {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--cream-dim);
+      text-decoration: none;
+      margin-left: 2.5rem;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    nav a:hover { color: var(--gold-light); }
+
+    /* ======= DROPDOWN ======= */
+    .nav-dropdown { position: relative; margin-left: 2.5rem; }
+
+    .nav-dropdown-toggle {
+      font-family: 'Cinzel', serif;
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      color: var(--cream-dim);
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: color 0.3s;
+      user-select: none;
+    }
+
+    .nav-dropdown-toggle:hover { color: var(--gold-light); }
+
+    .nav-dropdown-menu {
+      display: none;
+      position: absolute;
+      top: calc(100% + 0.75rem);
+      right: 0;
+      background: rgba(26,16,8,0.97);
+      border: 1px solid rgba(197,168,76,0.2);
+      min-width: 160px;
+      z-index: 200;
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+
+    .nav-dropdown-menu a {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      color: var(--cream-dim);
+      text-decoration: none;
+      padding: 0.6rem 1rem;
+      text-transform: uppercase;
+      transition: color 0.2s, background 0.2s;
+      margin-left: 0;
+    }
+
+    .nav-dropdown-menu a:hover { color: var(--gold-light); background: rgba(197,168,76,0.05); }
+
+    /* ======= PAGE HERO — leather texture banner ======= */
+    .page-hero {
+      min-height: 28vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 7rem 2rem 3rem;
+      border-bottom: 1px solid rgba(197, 168, 76, 0.2);
+      background-image: url('Hero_Background.jpg');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 5, 2, 0.78);
+      pointer-events: none;
+    }
+
+    .page-hero > * { position: relative; z-index: 1; }
+
+    .page-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--cream);
+      letter-spacing: 0.05em;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-divider {
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold), transparent);
+      margin: 1rem auto;
+    }
+
+    .page-subtitle {
+      font-style: italic;
+      color: var(--cream-dim);
+      font-size: 1rem;
+    }
+
+    /* ======= VOLUME SWITCHER BAR =======
+       Buttons swap which PDF is loaded into the viewer window below.
+       Vol. I and Vol. V are active (drafts exist).
+       Vol. II, III, IV show "In Development" message instead of a PDF.
+    ======= */
+    .volume-switcher {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      padding: 1.5rem 2rem;
+      background: var(--mid);
+      border-bottom: 1px solid rgba(197, 168, 76, 0.15);
+    }
+
+    /* Base button style */
+    .vol-btn {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.5rem 1.2rem;
+      border: 1px solid rgba(197, 168, 76, 0.3);
+      background: transparent;
+      color: var(--cream-dim);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .vol-btn:hover { border-color: var(--gold); color: var(--gold-light); }
+
+    /* Active/selected volume button */
+    .vol-btn.active {
+      border-color: var(--gold);
+      color: var(--gold);
+      background: rgba(197, 168, 76, 0.08);
+    }
+
+    /* Unavailable volumes — dimmed, not clickable */
+    .vol-btn.unavailable {
+      opacity: 0.4;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    /* ======= VIEWER AREA ======= */
+    .viewer-container {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 2rem;
+      background: var(--dark);
+      /* Text selection disabled — prevents copy/paste of NLT text */
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+    }
+
+    /* The canvas PDF.js renders into */
+    #pdf-canvas {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.6);
+    }
+
+    /* Page navigation controls below the PDF */
+    .pdf-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1rem 0;
+      margin-top: 1rem;
+    }
+
+    .pdf-controls button {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border: 1px solid rgba(197, 168, 76, 0.3);
+      background: transparent;
+      color: var(--cream-dim);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .pdf-controls button:hover { border-color: var(--gold); color: var(--gold); }
+    .pdf-controls button:disabled { opacity: 0.3; cursor: default; }
+
+    .pdf-controls span {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      color: var(--tan);
+    }
+
+    /* ======= IN DEVELOPMENT MESSAGE =======
+       Shown instead of the PDF viewer for volumes not yet available.
+       Hidden by default — shown via JavaScript when an unavailable volume is selected.
+    ======= */
+    .in-development {
+      display: none; /* shown by JS when needed */
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .in-development .dev-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.4em;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .in-development h2 {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 1rem;
+    }
+
+    .in-development p {
+      color: var(--cream-dim);
+      max-width: 480px;
+      font-style: italic;
+    }
+
+    .dev-divider {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1rem auto 1.5rem;
+    }
+
+    /* ======= COPYRIGHT NOTICE ======= */
+    .copyright-notice {
+      text-align: center;
+      padding: 1rem 2rem 0.5rem;
+      font-family: 'Cinzel', serif;
+      font-size: 0.55rem;
+      letter-spacing: 0.1em;
+      color: var(--tan);
+      opacity: 0.7;
+      text-transform: uppercase;
+    }
+
+    /* ======= FOOTER ======= */
+    footer {
+      padding: 1.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(197, 168, 76, 0.1);
+    }
+
+    footer p {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      color: var(--tan);
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    /* ======= RESPONSIVE ======= */
+    @media (max-width: 768px) {
+      header { padding: 1rem 1.5rem; }
+      nav a { margin-left: 1rem; font-size: 0.65rem; }
+      .nav-dropdown { margin-left: 1rem; }
+      .volume-switcher { gap: 0.5rem; padding: 1rem; }
+      .vol-btn { font-size: 0.6rem; padding: 0.4rem 0.8rem; }
+      .viewer-container { padding: 1rem; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- ======= HEADER ======= -->
+  <header>
+    <a href="index.html" class="site-name">Vanguard Craftworks</a>
+    <nav>
+      <a href="index.html#codex">The Codex</a>
+      <a href="index.html#craft">Craft</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-toggle">Volumes ▾</span>
+        <div class="nav-dropdown-menu">
+          <a href="volume1.html">Vol. I — Torah</a>
+          <a href="volume2.html">Vol. II — Nevi'im</a>
+          <a href="volume3.html">Vol. III — Ketuvim</a>
+          <a href="volume4.html">Vol. IV — Apocrypha</a>
+          <a href="volume5.html">Vol. V — New Testament</a>
+        </div>
+      </div>
+      <a href="read.html">Read the Draft</a>
+      <a href="index.html#follow">Follow</a>
+    </nav>
+  </header>
+
+  <!-- ======= PAGE HERO ======= -->
+  <div class="page-hero">
+    <div class="page-label">The Vanguard Codex</div>
+    <h1>Read the Draft</h1>
+    <div class="hero-divider"></div>
+    <p class="page-subtitle">A work in progress. View only &mdash; not available for download.</p>
+  </div>
+
+  <!-- ======= VOLUME SWITCHER =======
+       Clicking a button calls loadVolume() in the script below.
+       Vol. I and Vol. V load actual PDFs.
+       Vol. II, III, IV show the "In Development" panel.
+  ======= -->
+  <div class="volume-switcher">
+    <button class="vol-btn active"       onclick="loadVolume(1)">Vol. I &mdash; Torah</button>
+    <button class="vol-btn unavailable"  onclick="loadVolume(2)">Vol. II &mdash; Nevi'im</button>
+    <button class="vol-btn unavailable"  onclick="loadVolume(3)">Vol. III &mdash; Ketuvim</button>
+    <button class="vol-btn unavailable"  onclick="loadVolume(4)">Vol. IV &mdash; Apocrypha</button>
+    <button class="vol-btn"             onclick="loadVolume(5)">Vol. V &mdash; New Testament</button>
+  </div>
+
+  <!-- ======= VIEWER AREA ======= -->
+  <div class="viewer-container" id="viewer-container">
+
+    <!-- PDF canvas — PDF.js renders pages here -->
+    <canvas id="pdf-canvas"></canvas>
+
+    <!-- Page turn controls -->
+    <div class="pdf-controls" id="pdf-controls">
+      <button id="btn-prev" onclick="changePage(-1)" disabled>&#8592; Prev</button>
+      <span id="page-info">Page 1 of 1</span>
+      <button id="btn-next" onclick="changePage(1)">Next &#8594;</button>
+    </div>
+
+    <!-- In Development panel — hidden until an unavailable volume is clicked -->
+    <div class="in-development" id="in-development">
+      <div class="dev-label">Coming Soon</div>
+      <h2 id="dev-volume-name">Volume II &mdash; Nevi'im</h2>
+      <div class="dev-divider"></div>
+      <p>This volume is currently in production. Check back as the project develops, or follow along on Substack for updates.</p>
+    </div>
+
+  </div>
+
+  <!-- NLT copyright notice -->
+  <div class="copyright-notice">
+    The New Living Translation is copyright &copy; Tyndale House Publishers. This text is displayed for personal demonstration purposes only and is not available for download or distribution.
+  </div>
+
+  <!-- ======= FOOTER ======= -->
+  <footer>
+    <p>Vanguard Craftworks &middot; High Desert, Southern California &middot; 2026</p>
+  </footer>
+
+  <!-- ======= PDF.js VIEWER SCRIPT =======
+
+    How this works:
+    - PDF.js renders PDFs onto an HTML canvas element without exposing a direct file URL
+    - The PDF file paths are only referenced inside this script, never in an href or src attribute
+    - Right-click saving doesn't work on a canvas element
+    - user-select: none on the container prevents text highlighting and copy/paste
+    - The PDF.js toolbar (including its download button) is not shown — we use our own simple controls
+
+    To add a volume when its draft is ready:
+    1. Put the PDF file in the same folder as this HTML file
+    2. Add its filename to the 'volumes' object below
+    3. Remove 'unavailable' class from its button above
+
+  ======= -->
+  <script>
+    // ======= CONFIGURATION =======
+    // Map volume numbers to PDF filenames.
+    // null = not yet available, shows "In Development" panel instead.
+    const volumes = {
+      1: 'V1Preamble.pdf',   // Vol. I — Torah (draft available)
+      2: null,               // Vol. II — Nevi'im (in production)
+      3: null,               // Vol. III — Ketuvim (not started)
+      4: null,               // Vol. IV — Apocrypha (not started)
+      5: 'V5Preamble.pdf'    // Vol. V — New Testament (draft available)
+    };
+
+    // Volume display names for the "In Development" panel heading
+    const volumeNames = {
+      1: 'Volume I \u2014 Torah',
+      2: 'Volume II \u2014 Nevi\u02bcim',
+      3: 'Volume III \u2014 Ketuvim',
+      4: 'Volume IV \u2014 Apocrypha',
+      5: 'Volume V \u2014 New Testament'
+    };
+
+    // ======= STATE =======
+    let pdfDoc = null;       // The loaded PDF.js document object
+    let currentPage = 1;     // Which page is currently displayed
+    let currentVolume = 1;   // Which volume is currently selected
+    let rendering = false;   // Prevent overlapping render calls
+
+    // Point PDF.js to its worker file (required, loaded from same CDN)
+    pdfjsLib.GlobalWorkerOptions.workerSrc =
+      'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    // ======= RENDER A SINGLE PAGE =======
+    function renderPage(num) {
+      if (rendering) return;
+      rendering = true;
+
+      pdfDoc.getPage(num).then(function(page) {
+        const canvas  = document.getElementById('pdf-canvas');
+        const ctx     = canvas.getContext('2d');
+
+        // Scale to fit the viewer container width, accounting for device pixel ratio
+        const containerWidth = document.getElementById('viewer-container').clientWidth - 64;
+        const viewport = page.getViewport({ scale: 1 });
+        const scale    = containerWidth / viewport.width;
+        const scaledViewport = page.getViewport({ scale });
+
+        canvas.height = scaledViewport.height;
+        canvas.width  = scaledViewport.width;
+
+        page.render({ canvasContext: ctx, viewport: scaledViewport }).promise.then(function() {
+          rendering = false;
+
+          // Update page counter display
+          document.getElementById('page-info').textContent =
+            'Page ' + num + ' of ' + pdfDoc.numPages;
+
+          // Enable/disable prev/next buttons based on current page
+          document.getElementById('btn-prev').disabled = (num <= 1);
+          document.getElementById('btn-next').disabled = (num >= pdfDoc.numPages);
+        });
+      });
+    }
+
+    // ======= CHANGE PAGE =======
+    function changePage(delta) {
+      const newPage = currentPage + delta;
+      if (newPage < 1 || newPage > pdfDoc.numPages) return;
+      currentPage = newPage;
+      renderPage(currentPage);
+    }
+
+    // ======= SHOW/HIDE PANELS =======
+    function showPdfViewer() {
+      document.getElementById('pdf-canvas').style.display   = 'block';
+      document.getElementById('pdf-controls').style.display = 'flex';
+      document.getElementById('in-development').style.display = 'none';
+    }
+
+    function showInDevelopment(volNum) {
+      document.getElementById('pdf-canvas').style.display   = 'none';
+      document.getElementById('pdf-controls').style.display = 'none';
+      const devPanel = document.getElementById('in-development');
+      devPanel.style.display = 'flex';
+      document.getElementById('dev-volume-name').textContent = volumeNames[volNum];
+    }
+
+    // ======= LOAD A VOLUME =======
+    // Called when a volume button is clicked.
+    function loadVolume(volNum) {
+      currentVolume = volNum;
+
+      // Update active button styling
+      document.querySelectorAll('.vol-btn').forEach(function(btn) {
+        btn.classList.remove('active');
+      });
+      document.querySelectorAll('.vol-btn')[volNum - 1].classList.add('active');
+
+      // Check if a PDF exists for this volume
+      const filename = volumes[volNum];
+
+      if (!filename) {
+        // No PDF yet — show the "In Development" panel
+        showInDevelopment(volNum);
+        return;
+      }
+
+      // PDF exists — load and render it
+      showPdfViewer();
+      currentPage = 1;
+
+      pdfjsLib.getDocument(filename).promise.then(function(doc) {
+        pdfDoc = doc;
+        renderPage(currentPage);
+      }).catch(function(err) {
+        // If the PDF file isn't found, show a friendly message
+        console.error('PDF load error:', err);
+        document.getElementById('pdf-canvas').style.display = 'none';
+        document.getElementById('pdf-controls').style.display = 'none';
+        const devPanel = document.getElementById('in-development');
+        devPanel.style.display = 'flex';
+        document.getElementById('dev-volume-name').textContent = volumeNames[volNum];
+        devPanel.querySelector('p').textContent = 'Draft file not found. Make sure ' + filename + ' is in the same folder as this page.';
+      });
+    }
+
+    // ======= DISABLE RIGHT-CLICK ON CANVAS =======
+    // Prevents "Save image as..." on the rendered PDF canvas
+    document.getElementById('pdf-canvas').addEventListener('contextmenu', function(e) {
+      e.preventDefault();
+    });
+
+    // ======= INITIAL LOAD =======
+    // Default to Vol. I on page load
+    window.addEventListener('load', function() {
+      loadVolume(1);
+    });
+
+  </script>
+
+</body>
+</html>

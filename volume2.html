@@ -8,88 +8,128 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Cinzel:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    :root{--dark:#1a1008;--leather:#2c1a0e;--tan:#8b5e3c;--gold:#c9a84c;--gold-light:#e8c87a;--cream:#f5edd8;--cream-dim:#e8dcc4;--red:#8b1a1a;}
-    *{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}
-    body{background-color:var(--dark);color:var(--cream);font-family:'EB Garamond',Georgia,serif;font-size:18px;line-height:1.7;overflow-x:hidden;}
-    body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:0.4;}
-    header{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.2rem 3rem;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(to bottom,rgba(26,16,8,0.98),rgba(26,16,8,0));}
-    .site-name{font-family:'Cinzel',serif;font-size:1rem;font-weight:600;letter-spacing:0.2em;color:var(--gold);text-transform:uppercase;text-decoration:none;}
-    nav a{font-family:'Cinzel',serif;font-size:0.75rem;letter-spacing:0.15em;color:var(--cream-dim);text-decoration:none;margin-left:2.5rem;text-transform:uppercase;transition:color 0.3s;}
-    nav a:hover{color:var(--gold-light);}
-    .page-hero{min-height:40vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 4rem;border-bottom:1px solid rgba(197,168,76,0.2);}
-    .volume-label{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;}
-    h1{font-family:'Cinzel',serif;font-size:clamp(2.2rem,5vw,3.5rem);font-weight:700;color:var(--cream);letter-spacing:0.05em;margin-bottom:1rem;}
-    .hero-divider{width:80px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:1.5rem auto;}
-    .volume-subtitle{font-style:italic;color:var(--cream-dim);max-width:600px;font-size:1.1rem;}
-    .main-content{max-width:860px;margin:0 auto;padding:4rem 2rem;}
-    .section-label{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.4em;color:var(--gold);text-transform:uppercase;margin-bottom:1rem;display:block;}
-    .section-title{font-family:'Cinzel',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:600;color:var(--cream);margin-bottom:1rem;}
-    .ornament-line{width:60px;height:1px;background:var(--gold);margin-bottom:2rem;}
-    p{color:var(--cream-dim);margin-bottom:1.2rem;}
-    .status-legend{display:flex;flex-wrap:wrap;gap:1.5rem;margin-bottom:3rem;padding:1.5rem;border:1px solid rgba(197,168,76,0.15);background:rgba(197,168,76,0.03);}
-    .legend-item{display:flex;align-items:center;gap:0.5rem;font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream-dim);}
-    .status-dot{width:12px;height:12px;border-radius:50%;flex-shrink:0;}
-    .dot-red{background:#cc3333;}.dot-orange{background:#cc6600;}.dot-yellow{background:#ccaa00;}.dot-blue{background:#3366cc;}.dot-green{background:#33aa55;}
-    .book-list{list-style:none;}
-    .book-item{display:flex;align-items:center;gap:1rem;padding:0.75rem 0;border-bottom:1px solid rgba(197,168,76,0.08);color:var(--cream-dim);font-size:1rem;}
-    .book-item:last-child{border-bottom:none;}
-    .book-number{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.15em;color:var(--tan);min-width:2rem;text-align:right;}
-    .book-name{flex:1;}
-    .book-status{font-family:'Cinzel',serif;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--tan);display:flex;align-items:center;gap:0.4rem;}
-    .decisions-section{margin-top:4rem;padding-top:4rem;border-top:1px solid rgba(197,168,76,0.2);}
-    .vol-nav{margin-top:3rem;padding-top:2rem;border-top:1px solid rgba(197,168,76,0.2);display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;}
-    .vol-nav a{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;text-decoration:none;color:var(--gold);transition:color 0.3s;}
-    .vol-nav a:hover{color:var(--gold-light);}
-    .vol-nav a.active{color:var(--cream);}
-    .vol-nav .sep{color:var(--leather);}
-    .note-box{border:1px solid rgba(197,168,76,0.2);background:rgba(197,168,76,0.04);padding:1.5rem;margin-bottom:2rem;font-style:italic;font-size:0.95rem;}
-    .subsection-label{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.3em;color:var(--tan);text-transform:uppercase;margin:2rem 0 0.5rem;display:block;padding-bottom:0.5rem;border-bottom:1px solid rgba(197,168,76,0.15);}
-    footer{padding:2.5rem;text-align:center;border-top:1px solid rgba(197,168,76,0.1);margin-top:4rem;}
-    footer p{font-family:'Cinzel',serif;font-size:0.65rem;letter-spacing:0.2em;color:var(--tan);text-transform:uppercase;margin:0;}
-    @media(max-width:768px){header{padding:1rem 1.5rem;}nav a{margin-left:1rem;font-size:0.65rem;}.vol-nav{gap:1rem;}}
+    /* See volume1.html for full CSS comments — structure is identical across all volume pages */
+    :root {
+      --dark: #1a1008; --mid: #231208; --leather: #2c1a0e; --tan: #8b5e3c;
+      --gold: #c9a84c; --gold-light: #e8c87a; --cream: #f5edd8; --cream-dim: #e8dcc4; --red: #8b1a1a;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background-color: var(--dark); color: var(--cream); font-family: 'EB Garamond', Georgia, serif; font-size: 18px; line-height: 1.7; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; opacity: 0.4; }
+    header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.2rem 3rem; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(26,16,8,0.98), rgba(26,16,8,0)); }
+    .site-name { font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 600; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; text-decoration: none; }
+    nav { display: flex; align-items: center; }
+    nav a { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--cream-dim); text-decoration: none; margin-left: 2.5rem; text-transform: uppercase; transition: color 0.3s; }
+    nav a:hover { color: var(--gold-light); }
+    .nav-dropdown { position: relative; margin-left: 2.5rem; }
+    .nav-dropdown-toggle { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--cream-dim); text-transform: uppercase; cursor: pointer; transition: color 0.3s; user-select: none; }
+    .nav-dropdown-toggle:hover { color: var(--gold-light); }
+    .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 0.75rem); right: 0; background: rgba(26,16,8,0.97); border: 1px solid rgba(197,168,76,0.2); min-width: 160px; z-index: 200; }
+    .nav-dropdown:hover .nav-dropdown-menu { display: block; }
+    .nav-dropdown-menu a { display: block; font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--cream-dim); text-decoration: none; padding: 0.6rem 1rem; text-transform: uppercase; transition: color 0.2s, background 0.2s; margin-left: 0; }
+    .nav-dropdown-menu a:hover { color: var(--gold-light); background: rgba(197,168,76,0.05); }
+    .page-hero { min-height: 40vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 4rem; border-bottom: 1px solid rgba(197,168,76,0.2); background-image: url('Hero_Background.jpg'); background-size: cover; background-position: center; position: relative; }
+    .page-hero::before { content: ''; position: absolute; inset: 0; background: rgba(10,5,2,0.78); pointer-events: none; }
+    .page-hero > * { position: relative; z-index: 1; }
+    .volume-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; }
+    h1 { font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 700; color: var(--cream); letter-spacing: 0.05em; margin-bottom: 1rem; }
+    .hero-divider { width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 1.5rem auto; }
+    .volume-subtitle { font-style: italic; color: var(--cream-dim); max-width: 600px; font-size: 1.1rem; }
+    .main-content { max-width: 860px; margin: 0 auto; padding: 4rem 2rem; }
+    .section-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.4em; color: var(--gold); text-transform: uppercase; margin-bottom: 1rem; display: block; }
+    .section-title { font-family: 'Cinzel', serif; font-size: clamp(1.4rem, 3vw, 2rem); font-weight: 600; color: var(--cream); margin-bottom: 1rem; }
+    .ornament-line { width: 60px; height: 1px; background: var(--gold); margin-bottom: 2rem; }
+    p { color: var(--cream-dim); margin-bottom: 1.2rem; }
+    .status-legend { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 3rem; padding: 1.5rem; border: 1px solid rgba(197,168,76,0.15); background: rgba(197,168,76,0.03); }
+    .legend-item { display: flex; align-items: center; gap: 0.5rem; font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cream-dim); }
+    .status-dot { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
+    .dot-red    { background: #cc3333; } /* Not Started */
+    .dot-orange { background: #cc6600; } /* Marking Up  */
+    .dot-yellow { background: #ccaa00; } /* In LaTeX    */
+    .dot-green  { background: #33aa55; } /* Complete    */
+    .book-list { list-style: none; }
+    .book-item { display: flex; align-items: center; gap: 1rem; padding: 0.75rem 0; border-bottom: 1px solid rgba(197,168,76,0.08); color: var(--cream-dim); font-size: 1rem; }
+    .book-item:last-child { border-bottom: none; }
+    .book-number { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.15em; color: var(--tan); min-width: 2rem; text-align: right; }
+    .book-name { flex: 1; }
+    .book-status { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tan); display: flex; align-items: center; gap: 0.4rem; }
+    .subsection-label { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.3em; color: var(--tan); text-transform: uppercase; margin: 2rem 0 0.5rem; display: block; padding-bottom: 0.5rem; border-bottom: 1px solid rgba(197,168,76,0.15); }
+    .decisions-section { margin-top: 4rem; padding-top: 4rem; border-top: 1px solid rgba(197,168,76,0.2); }
+    .vol-nav { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(197,168,76,0.2); display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+    .vol-nav a { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; color: var(--gold); transition: color 0.3s; }
+    .vol-nav a:hover { color: var(--gold-light); }
+    .vol-nav a.active { color: var(--cream); }
+    .vol-nav .sep { color: var(--leather); }
+    .note-box { border: 1px solid rgba(197,168,76,0.2); background: rgba(197,168,76,0.04); padding: 1.5rem; margin-bottom: 2rem; font-style: italic; font-size: 0.95rem; }
+    footer { padding: 2.5rem; text-align: center; border-top: 1px solid rgba(197,168,76,0.1); margin-top: 4rem; }
+    footer p { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--tan); text-transform: uppercase; margin: 0; }
+    @media (max-width: 768px) { header { padding: 1rem 1.5rem; } nav a { margin-left: 1rem; font-size: 0.65rem; } .nav-dropdown { margin-left: 1rem; } .vol-nav { gap: 1rem; } }
   </style>
 </head>
 <body>
+
   <header>
     <a href="index.html" class="site-name">Vanguard Craftworks</a>
     <nav>
       <a href="index.html#codex">The Codex</a>
       <a href="index.html#craft">Craft</a>
+      <div class="nav-dropdown">
+        <span class="nav-dropdown-toggle">Volumes ▾</span>
+        <div class="nav-dropdown-menu">
+          <a href="volume1.html">Vol. I — Torah</a>
+          <a href="volume2.html">Vol. II — Nevi'im</a>
+          <a href="volume3.html">Vol. III — Ketuvim</a>
+          <a href="volume4.html">Vol. IV — Apocrypha</a>
+          <a href="volume5.html">Vol. V — New Testament</a>
+        </div>
+      </div>
+      <a href="read.html">Read the Draft</a>
       <a href="index.html#follow">Follow</a>
     </nav>
   </header>
+
   <div class="page-hero">
     <div class="volume-label">Volume II &middot; The Vanguard Codex</div>
     <h1>Nevi'im</h1>
     <div class="hero-divider"></div>
     <p class="volume-subtitle">The Prophets &mdash; Former and Latter &mdash; ordered according to the Babylonian Talmud tractate Baba Bathra.</p>
   </div>
+
   <div class="main-content">
+
     <span class="section-label">Production Status</span>
     <h2 class="section-title">Books of the Nevi'im</h2>
     <div class="ornament-line"></div>
+
     <div class="status-legend">
       <div class="legend-item"><div class="status-dot dot-red"></div> Not Started</div>
-      <div class="legend-item"><div class="status-dot dot-orange"></div> Rip to TXT In Progress</div>
-      <div class="legend-item"><div class="status-dot dot-yellow"></div> Marked Up</div>
-      <div class="legend-item"><div class="status-dot dot-blue"></div> In LaTeX</div>
+      <div class="legend-item"><div class="status-dot dot-orange"></div> Marking Up</div>
+      <div class="legend-item"><div class="status-dot dot-yellow"></div> In LaTeX</div>
       <div class="legend-item"><div class="status-dot dot-green"></div> Complete</div>
     </div>
+
+    <!-- Former Prophets -->
     <span class="subsection-label">Former Prophets</span>
     <ul class="book-list">
-      <li class="book-item"><span class="book-number">1</span><span class="book-name">Joshua</span><span class="book-status"><div class="status-dot dot-blue"></div> In LaTeX</span></li>
-      <li class="book-item"><span class="book-number">2</span><span class="book-name">Judges</span><span class="book-status"><div class="status-dot dot-blue"></div> In LaTeX</span></li>
-      <li class="book-item"><span class="book-number">3</span><span class="book-name">1 Samuel</span><span class="book-status"><div class="status-dot dot-blue"></div> In LaTeX</span></li>
-      <li class="book-item"><span class="book-number">4</span><span class="book-name">2 Samuel</span><span class="book-status"><div class="status-dot dot-blue"></div> In LaTeX</span></li>
-      <li class="book-item"><span class="book-number">5</span><span class="book-name">1 Kings</span><span class="book-status"><div class="status-dot dot-blue"></div> In LaTeX</span></li>
-      <li class="book-item"><span class="book-number">6</span><span class="book-name">2 Kings</span><span class="book-status"><div class="status-dot dot-blue"></div> In LaTeX</span></li>
+      <li class="book-item"><span class="book-number">1</span><span class="book-name">Joshua</span><span class="book-status"><div class="status-dot dot-yellow"></div> In LaTeX</span></li>
+      <li class="book-item"><span class="book-number">2</span><span class="book-name">Judges</span><span class="book-status"><div class="status-dot dot-yellow"></div> In LaTeX</span></li>
+      <li class="book-item"><span class="book-number">3</span><span class="book-name">1 Samuel</span><span class="book-status"><div class="status-dot dot-yellow"></div> In LaTeX</span></li>
+      <li class="book-item"><span class="book-number">4</span><span class="book-name">2 Samuel</span><span class="book-status"><div class="status-dot dot-yellow"></div> In LaTeX</span></li>
+      <li class="book-item"><span class="book-number">5</span><span class="book-name">1 Kings</span><span class="book-status"><div class="status-dot dot-yellow"></div> In LaTeX</span></li>
+      <li class="book-item"><span class="book-number">6</span><span class="book-name">2 Kings</span><span class="book-status"><div class="status-dot dot-yellow"></div> In LaTeX</span></li>
     </ul>
+
+    <!-- Latter Prophets — Baba Bathra order: Jeremiah, Ezekiel, Isaiah, The Twelve -->
     <span class="subsection-label">Latter Prophets</span>
     <ul class="book-list">
-      <li class="book-item"><span class="book-number">7</span><span class="book-name">Jeremiah</span><span class="book-status"><div class="status-dot dot-blue"></div> In LaTeX</span></li>
-      <li class="book-item"><span class="book-number">8</span><span class="book-name">Ezekiel</span><span class="book-status"><div class="status-dot dot-blue"></div> In LaTeX</span></li>
-      <li class="book-item"><span class="book-number">9</span><span class="book-name">Isaiah</span><span class="book-status"><div class="status-dot dot-orange"></div> Rip to TXT In Progress</span></li>
+      <li class="book-item"><span class="book-number">7</span><span class="book-name">Jeremiah</span><span class="book-status"><div class="status-dot dot-yellow"></div> In LaTeX</span></li>
+      <li class="book-item"><span class="book-number">8</span><span class="book-name">Ezekiel</span><span class="book-status"><div class="status-dot dot-yellow"></div> In LaTeX</span></li>
+      <!-- Isaiah is currently being marked up — chapter ~21 as of last update -->
+      <li class="book-item"><span class="book-number">9</span><span class="book-name">Isaiah</span><span class="book-status"><div class="status-dot dot-orange"></div> Marking Up</span></li>
     </ul>
+
+    <!-- The Twelve minor prophets — treated as individual books -->
     <span class="subsection-label">The Twelve</span>
     <ul class="book-list">
       <li class="book-item"><span class="book-number">10</span><span class="book-name">Hosea</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
@@ -105,6 +145,7 @@
       <li class="book-item"><span class="book-number">20</span><span class="book-name">Zechariah</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
       <li class="book-item"><span class="book-number">21</span><span class="book-name">Malachi</span><span class="book-status"><div class="status-dot dot-red"></div> Not Started</span></li>
     </ul>
+
     <div class="decisions-section">
       <span class="section-label">On This Volume</span>
       <h2 class="section-title">Ordering &amp; Translation Decisions</h2>
@@ -112,10 +153,21 @@
       <p>The Nevi'im follows the ordering found in the Babylonian Talmud tractate Baba Bathra 14b &mdash; one of the oldest documented canonical sequences for the Hebrew prophetic books. The Former Prophets (Joshua through Kings) narrate the history of Israel from the conquest through the exile. The Latter Prophets (Jeremiah, Ezekiel, Isaiah, and The Twelve) carry the prophetic voice of that same era.</p>
       <p>Note the ordering of the major prophets &mdash; Jeremiah, then Ezekiel, then Isaiah. This is the Baba Bathra sequence, which differs from most modern Bibles that place Isaiah first. The Twelve minor prophets are treated as a single unit in the ancient tradition.</p>
     </div>
-<div class="vol-nav"><a href="index.html">Home</a><span class="sep">|</span><a href="volume1.html">Vol I</a><span class="sep">|</span><a href="volume2.html" class="active">Vol II</a><span class="sep">|</span><a href="volume3.html">Vol III</a><span class="sep">|</span><a href="volume4.html">Vol IV</a><span class="sep">|</span><a href="volume5.html">Vol V</a></div>
+
+    <div class="vol-nav">
+      <a href="index.html">Home</a><span class="sep">|</span>
+      <a href="volume1.html">Vol I</a><span class="sep">|</span>
+      <a href="volume2.html" class="active">Vol II</a><span class="sep">|</span>
+      <a href="volume3.html">Vol III</a><span class="sep">|</span>
+      <a href="volume4.html">Vol IV</a><span class="sep">|</span>
+      <a href="volume5.html">Vol V</a>
+    </div>
+
   </div>
+
   <footer>
     <p>Vanguard Craftworks &middot; High Desert, Southern California &middot; 2026</p>
   </footer>
+
 </body>
 </html>
