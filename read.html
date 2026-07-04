@@ -652,10 +652,10 @@
         const canvas  = document.getElementById('pdf-canvas');
         const ctx     = canvas.getContext('2d');
 
-        // Account for device pixel ratio — retina/high-DPI screens (like iPhone)
-        // have a ratio of 2 or 3, meaning we need to render at that multiple
-        // to get a sharp result. Without this, the canvas looks blurry on phones.
-        const dpr = window.devicePixelRatio || 1;
+        // Use the actual device pixel ratio with no cap — lets 4K and high-DPI
+        // monitors render at full native sharpness. Floor of 2 ensures even
+        // standard monitors get a 2x render which looks noticeably crisper.
+        const dpr = Math.max(window.devicePixelRatio || 1, 2);
 
         // Cap display width at 680px, then render internally at dpr multiple
         const displayWidth = Math.min(canvas.parentElement.clientWidth - 64, 680);
