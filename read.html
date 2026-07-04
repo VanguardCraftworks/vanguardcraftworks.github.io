@@ -280,6 +280,69 @@
       pointer-events: none;
     }
 
+    /* ======= BOOK SELECTOR & PAGE JUMP BAR =======
+       Sits between the volume switcher and the PDF canvas.
+       Hidden when "In Development" panel is showing.
+    ======= */
+    .reader-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 0.75rem 2rem;
+      background: var(--dark);
+      border-bottom: 1px solid rgba(197, 168, 76, 0.1);
+    }
+
+    /* Book dropdown select */
+    #book-select {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: rgba(197, 168, 76, 0.05);
+      border: 1px solid rgba(197, 168, 76, 0.3);
+      color: var(--cream-dim);
+      padding: 0.4rem 0.8rem;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      min-width: 200px;
+    }
+
+    #book-select:hover { border-color: var(--gold); }
+    #book-select:focus { outline: none; border-color: var(--gold); }
+
+    /* Thin separator between book select and page jump */
+    .controls-sep {
+      color: var(--leather);
+      font-size: 0.8rem;
+    }
+
+    /* Page number input */
+    #page-jump-input {
+      font-family: 'Cinzel', serif;
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      background: rgba(197, 168, 76, 0.05);
+      border: 1px solid rgba(197, 168, 76, 0.3);
+      color: var(--cream-dim);
+      padding: 0.4rem 0.6rem;
+      width: 70px;
+      text-align: center;
+      transition: border-color 0.2s;
+    }
+
+    #page-jump-input:focus { outline: none; border-color: var(--gold); }
+
+    .page-jump-label {
+      font-family: 'Cinzel', serif;
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--tan);
+    }
+
     /* ======= VIEWER AREA ======= */
     .viewer-container {
       flex: 1;
@@ -564,6 +627,32 @@
     <button class="vol-btn"             onclick="loadVolume(5)">Vol. V &mdash; New Testament</button>
   </div>
 
+  <!-- ======= BOOK SELECTOR & PAGE JUMP BAR =======
+       Book dropdown populates from JS based on which volume is loaded.
+       Page jump lets you type any page number and hit Enter to go there.
+       Both hidden when an unavailable volume is selected.
+  ======= -->
+  <div class="reader-controls" id="reader-controls">
+
+    <!-- Book selector — options populated by JS when a volume loads -->
+    <select id="book-select" onchange="jumpToBook(this.value)">
+      <option value="">— Jump to Book —</option>
+    </select>
+
+    <span class="controls-sep">|</span>
+
+    <!-- Page number input — type a page, press Enter -->
+    <span class="page-jump-label">Go to page</span>
+    <input
+      type="number"
+      id="page-jump-input"
+      min="1"
+      placeholder="—"
+      onkeydown="if(event.key==='Enter') jumpToPage(this.value)"
+    />
+
+  </div>
+
   <!-- ======= VIEWER AREA ======= -->
   <div class="viewer-container" id="viewer-container">
 
@@ -609,12 +698,12 @@
     To add a volume when its draft is ready:
     1. Put the PDF file in the same folder as this HTML file
     2. Add its filename to the 'volumes' object below
-    3. Remove 'unavailable' class from its button above
+    3. Add its book list to the 'volumeBooks' object below
+    4. Remove 'unavailable' class from its button above
 
   ======= -->
   <script>
-    // ======= CONFIGURATION =======
-    // Map volume numbers to PDF filenames.
+    // ======= VOLUME PDF FILENAMES =======
     // null = not yet available, shows "In Development" panel instead.
     const volumes = {
       1: 'V1Preamble.pdf',   // Vol. I — Torah (draft available)
@@ -622,6 +711,67 @@
       3: null,               // Vol. III — Ketuvim (not started)
       4: null,               // Vol. IV — Apocrypha (not started)
       5: 'V5Preamble.pdf'    // Vol. V — New Testament (draft available)
+    };
+
+    // ======= BOOK PAGE LOOKUP TABLES =======
+    // page = PDF file page number (not the printed number on the page).
+    // Front matter pages count. So if there are 4 pages of front matter,
+    // and Genesis has "1" printed on it, Genesis = file page 5.
+    //
+    // UPDATE THESE whenever you upload a new version of a PDF —
+    // page numbers shift as you edit. Check the PDF TOC for current numbers.
+
+    const volumeBooks = {
+
+      // --- Vol. I — Torah ---
+      1: [
+        { name: 'Genesis',       page: 5   },
+        { name: 'Exodus',        page: 127 },
+        { name: 'Leviticus',     page: 227 },
+        { name: 'Numbers',       page: 295 },
+        { name: 'Deuteronomy',   page: 393 }
+      ],
+
+      // --- Vol. II — Nevi\'im (in production, no page numbers yet) ---
+      2: [],
+
+      // --- Vol. III — Ketuvim (not started) ---
+      3: [],
+
+      // --- Vol. IV — Apocrypha (not started) ---
+      4: [],
+
+      // --- Vol. V — New Testament ---
+      5: [
+        { name: 'Matthew',          page: 5   },
+        { name: 'Mark',             page: 89  },
+        { name: 'Luke',             page: 143 },
+        { name: 'John',             page: 231 },
+        { name: 'Acts',             page: 293 },
+        { name: 'James',            page: 371 },
+        { name: '1 Peter',          page: 381 },
+        { name: '2 Peter',          page: 393 },
+        { name: '1 John',           page: 399 },
+        { name: '2 John',           page: 409 },
+        { name: '3 John',           page: 411 },
+        { name: 'Jude',             page: 413 },
+        { name: 'Romans',           page: 417 },
+        { name: '1 Corinthians',    page: 453 },
+        { name: '2 Corinthians',    page: 487 },
+        { name: 'Galatians',        page: 511 },
+        { name: 'Ephesians',        page: 525 },
+        { name: 'Philippians',      page: 537 },
+        { name: 'Colossians',       page: 547 },
+        { name: '1 Thessalonians',  page: 557 },
+        { name: '2 Thessalonians',  page: 565 },
+        { name: 'Hebrews',          page: 571 },
+        { name: '1 Timothy',        page: 601 },
+        { name: '2 Timothy',        page: 611 },
+        { name: 'Titus',            page: 619 },
+        { name: 'Philemon',         page: 625 },
+        { name: 'Revelation',       page: 629 }
+      ]
+
     };
 
     // Volume display names for the "In Development" panel heading
@@ -642,6 +792,56 @@
     // Point PDF.js to its worker file (required, loaded from same CDN)
     pdfjsLib.GlobalWorkerOptions.workerSrc =
       'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+    // ======= POPULATE BOOK DROPDOWN =======
+    // Called when a volume loads — fills the select with that volume's books.
+    // Clears and hides the dropdown if no books are defined yet.
+    function populateBookSelect(volNum) {
+      const select = document.getElementById('book-select');
+      const books  = volumeBooks[volNum] || [];
+
+      // Clear existing options
+      select.innerHTML = '<option value="">— Jump to Book —</option>';
+
+      if (books.length === 0) {
+        select.style.display = 'none';
+        return;
+      }
+
+      select.style.display = '';
+      books.forEach(function(book) {
+        const opt = document.createElement('option');
+        opt.value = book.page;
+        opt.textContent = book.name;
+        select.appendChild(opt);
+      });
+    }
+
+    // ======= JUMP TO BOOK =======
+    // Called when user picks a book from the dropdown.
+    function jumpToBook(pageNum) {
+      if (!pageNum || !pdfDoc) return;
+      const p = parseInt(pageNum);
+      if (p >= 1 && p <= pdfDoc.numPages) {
+        currentPage = p;
+        renderPage(currentPage);
+        // Reset dropdown to placeholder so it can be selected again
+        document.getElementById('book-select').value = '';
+      }
+    }
+
+    // ======= JUMP TO PAGE =======
+    // Called when user types a page number and hits Enter.
+    function jumpToPage(val) {
+      if (!pdfDoc) return;
+      const p = parseInt(val);
+      if (!isNaN(p) && p >= 1 && p <= pdfDoc.numPages) {
+        currentPage = p;
+        renderPage(currentPage);
+      }
+      // Clear the input after jumping
+      document.getElementById('page-jump-input').value = '';
+    }
 
     // ======= RENDER A SINGLE PAGE =======
     function renderPage(num) {
@@ -697,12 +897,14 @@
     function showPdfViewer() {
       document.getElementById('pdf-canvas').style.display   = 'block';
       document.getElementById('pdf-controls').style.display = 'flex';
+      document.getElementById('reader-controls').style.display = 'flex';
       document.getElementById('in-development').style.display = 'none';
     }
 
     function showInDevelopment(volNum) {
       document.getElementById('pdf-canvas').style.display   = 'none';
       document.getElementById('pdf-controls').style.display = 'none';
+      document.getElementById('reader-controls').style.display = 'none';
       const devPanel = document.getElementById('in-development');
       devPanel.style.display = 'flex';
       document.getElementById('dev-volume-name').textContent = volumeNames[volNum];
@@ -731,6 +933,7 @@
       // PDF exists — load and render it
       showPdfViewer();
       currentPage = 1;
+      populateBookSelect(volNum);
 
       pdfjsLib.getDocument(filename).promise.then(function(doc) {
         pdfDoc = doc;
