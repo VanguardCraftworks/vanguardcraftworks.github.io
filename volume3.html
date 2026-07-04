@@ -17,17 +17,44 @@
     header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.2rem 3rem; display: flex; justify-content: space-between; align-items: center; background: linear-gradient(to bottom, rgba(26,16,8,0.98), rgba(26,16,8,0)); }
     .site-name { font-family: 'Cinzel', serif; font-size: 1rem; font-weight: 600; letter-spacing: 0.2em; color: var(--gold); text-transform: uppercase; text-decoration: none; }
     nav { display: flex; align-items: center; }
+    /* ======= DESKTOP NAV ======= */
     nav a { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--cream-dim); text-decoration: none; margin-left: 2.5rem; text-transform: uppercase; transition: color 0.3s; }
     nav a:hover { color: var(--gold-light); }
+    /* Dropdown gap fix: padding-top bridges the space so hover doesn't break */
     .nav-dropdown { position: relative; margin-left: 2.5rem; }
     .nav-dropdown-toggle { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 0.15em; color: var(--cream-dim); text-transform: uppercase; cursor: pointer; transition: color 0.3s; user-select: none; display: inline-flex; align-items: center; gap: 0.3em; white-space: nowrap; }
     .nav-dropdown-toggle:hover { color: var(--gold-light); }
-    .nav-dropdown-menu { display: none; position: absolute; top: calc(100% + 0.75rem); right: 0; background: rgba(26,16,8,0.97); border: 1px solid rgba(197,168,76,0.2); min-width: 220px; z-index: 200; }
+    .nav-dropdown-menu { display: none; position: absolute; top: 100%; right: 0; padding-top: 0.75rem; z-index: 200; }
+    .nav-dropdown-menu-inner { background: rgba(26,16,8,0.97); border: 1px solid rgba(197,168,76,0.2); min-width: 220px; }
     .nav-dropdown:hover .nav-dropdown-menu { display: block; }
     .nav-dropdown-menu a { display: block; font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.15em; color: var(--cream-dim); text-decoration: none; padding: 0.6rem 1rem; text-transform: uppercase; transition: color 0.2s, background 0.2s; margin-left: 0; }
     .nav-dropdown-menu a:hover { color: var(--gold-light); background: rgba(197,168,76,0.05); }
     .vol-num { display: block; font-size: 0.55rem; letter-spacing: 0.2em; color: var(--tan); margin-bottom: 0.1rem; }
     .vol-name { display: block; font-size: 0.7rem; letter-spacing: 0.12em; color: inherit; }
+    /* ======= HAMBURGER (mobile only) ======= */
+    .hamburger { display: none; flex-direction: column; justify-content: center; gap: 5px; cursor: pointer; padding: 0.3rem; background: none; border: none; z-index: 300; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); transition: all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity: 0; }
+    .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    /* ======= MOBILE MENU OVERLAY ======= */
+    .mobile-menu { display: none; position: fixed; top: 0; left: 0; right: 0; background: rgba(16,8,3,0.98); border-bottom: 1px solid rgba(197,168,76,0.2); z-index: 250; padding: 5rem 2rem 2rem; flex-direction: column; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu-main { display: flex; flex-direction: column; gap: 0; }
+    .mobile-menu-volumes { display: none; flex-direction: column; gap: 0; }
+    .mobile-menu-volumes.open { display: flex; }
+    .mobile-menu-main.hidden { display: none; }
+    .mobile-nav-item { font-family: 'Cinzel', serif; font-size: 0.85rem; letter-spacing: 0.2em; color: var(--cream-dim); text-decoration: none; text-transform: uppercase; padding: 1rem 0; border-bottom: 1px solid rgba(197,168,76,0.1); cursor: pointer; background: none; border-left: none; border-right: none; border-top: none; text-align: left; width: 100%; display: flex; justify-content: space-between; align-items: center; transition: color 0.2s; }
+    .mobile-nav-item:hover { color: var(--gold-light); }
+    .mobile-nav-item:last-child { border-bottom: none; }
+    .mobile-back-btn { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--tan); text-transform: uppercase; background: none; border: none; cursor: pointer; padding: 0.5rem 0 1rem; text-align: left; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+    .mobile-back-btn:hover { color: var(--gold); }
+    .mobile-vol-item { font-family: 'Cinzel', serif; color: var(--cream-dim); text-decoration: none; text-transform: uppercase; padding: 0.9rem 0 0.9rem 1rem; border-bottom: 1px solid rgba(197,168,76,0.08); display: block; transition: color 0.2s; }
+    .mobile-vol-item:hover { color: var(--gold-light); }
+    .mobile-vol-item:last-child { border-bottom: none; }
+    .mobile-vol-item .vol-num { font-size: 0.55rem; letter-spacing: 0.2em; color: var(--tan); margin-bottom: 0.15rem; }
+    .mobile-vol-item .vol-name { font-size: 0.8rem; letter-spacing: 0.12em; }
+    @media (max-width: 768px) { nav { display: none; } .hamburger { display: flex; } header { padding: 1rem 1.5rem; } }
     .page-hero { min-height: 40vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 8rem 2rem 4rem; border-bottom: 1px solid rgba(197,168,76,0.2); background-image: url('Hero_Background.jpg'); background-size: cover; background-position: center; position: relative; }
     .page-hero::before { content: ''; position: absolute; inset: 0; background: rgba(10,5,2,0.78); pointer-events: none; }
     .page-hero > * { position: relative; z-index: 1; }
@@ -56,7 +83,7 @@
     .vol-nav a:hover { color: var(--gold-light); } .vol-nav a.active { color: var(--cream); } .vol-nav .sep { color: var(--leather); }
     footer { padding: 2.5rem; text-align: center; border-top: 1px solid rgba(197,168,76,0.1); margin-top: 4rem; }
     footer p { font-family: 'Cinzel', serif; font-size: 0.65rem; letter-spacing: 0.2em; color: var(--tan); text-transform: uppercase; margin: 0; }
-    @media (max-width: 768px) { header { padding: 1rem 1.5rem; } nav a { margin-left: 1rem; font-size: 0.65rem; } .nav-dropdown { margin-left: 1rem; } .vol-nav { gap: 1rem; } }
+    @media (max-width: 768px) { header { padding: 1rem 1.5rem; } .vol-nav { gap: 1rem; } }
   </style>
 </head>
 <body>
@@ -68,17 +95,105 @@
       <div class="nav-dropdown">
         <span class="nav-dropdown-toggle">Volumes &#9660;</span>
         <div class="nav-dropdown-menu">
-          <a href="volume1.html"><span class="vol-num">Vol. I</span><span class="vol-name">Torah</span></a>
-          <a href="volume2.html"><span class="vol-num">Vol. II</span><span class="vol-name">Nevi&#700;im</span></a>
-          <a href="volume3.html"><span class="vol-num">Vol. III</span><span class="vol-name">Ketuvim</span></a>
-          <a href="volume4.html"><span class="vol-num">Vol. IV</span><span class="vol-name">Apocrypha</span></a>
-          <a href="volume5.html"><span class="vol-num">Vol. V</span><span class="vol-name">New Testament</span></a>
+          <div class="nav-dropdown-menu-inner">
+            <a href="volume1.html"><span class="vol-num">Vol. I</span><span class="vol-name">Torah</span></a>
+            <a href="volume2.html"><span class="vol-num">Vol. II</span><span class="vol-name">Nevi&#700;im</span></a>
+            <a href="volume3.html"><span class="vol-num">Vol. III</span><span class="vol-name">Ketuvim</span></a>
+            <a href="volume4.html"><span class="vol-num">Vol. IV</span><span class="vol-name">Apocrypha</span></a>
+            <a href="volume5.html"><span class="vol-num">Vol. V</span><span class="vol-name">New Testament</span></a>
+          </div>
         </div>
       </div>
       <a href="read.html">Read the Draft</a>
       <a href="index.html#follow">Follow</a>
     </nav>
+
+    <!-- ======= HAMBURGER BUTTON (mobile only) ======= -->
+    <button class="hamburger" id="hamburger" aria-label="Menu" onclick="toggleMobileMenu()">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
   </header>
+
+  <!-- ======= MOBILE MENU OVERLAY =======
+       Main panel: standard nav links + Volumes button
+       Volumes panel: back button + vol I-V links
+       Controlled by toggleMobileMenu() and showVolumesSubmenu() below
+  ======= -->
+  <div class="mobile-menu" id="mobile-menu">
+
+    <!-- Main menu panel -->
+    <div class="mobile-menu-main" id="mobile-menu-main">
+      <a href="index.html#codex" class="mobile-nav-item">The Codex</a>
+      <a href="index.html#craft" class="mobile-nav-item">Craft</a>
+      <button class="mobile-nav-item" onclick="showVolumesSubmenu()">
+        Volumes <span style="color:var(--tan); font-size:0.7rem;">&#9656;</span>
+      </button>
+      <a href="read.html" class="mobile-nav-item">Read the Draft</a>
+      <a href="index.html#follow" class="mobile-nav-item">Follow</a>
+    </div>
+
+    <!-- Volumes submenu panel -->
+    <div class="mobile-menu-volumes" id="mobile-menu-volumes">
+      <button class="mobile-back-btn" onclick="showMainMenu()">&#8592; Back</button>
+      <a href="volume1.html" class="mobile-vol-item">
+        <span class="vol-num">Vol. I</span>
+        <span class="vol-name">Torah</span>
+      </a>
+      <a href="volume2.html" class="mobile-vol-item">
+        <span class="vol-num">Vol. II</span>
+        <span class="vol-name">Nevi&#700;im</span>
+      </a>
+      <a href="volume3.html" class="mobile-vol-item">
+        <span class="vol-num">Vol. III</span>
+        <span class="vol-name">Ketuvim</span>
+      </a>
+      <a href="volume4.html" class="mobile-vol-item">
+        <span class="vol-num">Vol. IV</span>
+        <span class="vol-name">Apocrypha</span>
+      </a>
+      <a href="volume5.html" class="mobile-vol-item">
+        <span class="vol-num">Vol. V</span>
+        <span class="vol-name">New Testament</span>
+      </a>
+    </div>
+
+  </div>
+
+  <!-- ======= MOBILE MENU JAVASCRIPT =======
+    toggleMobileMenu() — opens/closes the menu, animates hamburger to X
+    showVolumesSubmenu() — hides main panel, shows volumes panel
+    showMainMenu() — back button: hides volumes panel, shows main panel
+  ======= -->
+  <script>
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      const btn  = document.getElementById('hamburger');
+      const isOpen = menu.classList.contains('open');
+
+      if (isOpen) {
+        menu.classList.remove('open');
+        btn.classList.remove('open');
+        // Reset to main panel when closing
+        showMainMenu();
+      } else {
+        menu.classList.add('open');
+        btn.classList.add('open');
+      }
+    }
+
+    function showVolumesSubmenu() {
+      document.getElementById('mobile-menu-main').classList.add('hidden');
+      document.getElementById('mobile-menu-volumes').classList.add('open');
+    }
+
+    function showMainMenu() {
+      document.getElementById('mobile-menu-main').classList.remove('hidden');
+      document.getElementById('mobile-menu-volumes').classList.remove('open');
+    }
+  </script>
 
   <div class="page-hero">
     <div class="volume-label">Volume III &middot; The Vanguard Codex</div>
