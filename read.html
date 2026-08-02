@@ -624,10 +624,10 @@
   ======= -->
   <div class="volume-switcher">
     <button class="vol-btn active"       onclick="loadVolume(1)">Vol. I &mdash; Torah</button>
-    <button class="vol-btn unavailable"  onclick="loadVolume(2)">Vol. II &mdash; Nevi'im</button>
-    <button class="vol-btn unavailable"  onclick="loadVolume(3)">Vol. III &mdash; Ketuvim</button>
-    <button class="vol-btn unavailable"  onclick="loadVolume(4)">Vol. IV &mdash; Apocrypha</button>
-    <button class="vol-btn"             onclick="loadVolume(5)">Vol. V &mdash; New Testament</button>
+    <button class="vol-btn"       onclick="loadVolume(2)">Vol. II &mdash; Nevi'im</button>
+    <button class="vol-btn"       onclick="loadVolume(3)">Vol. III &mdash; Ketuvim</button>
+    <button class="vol-btn"       onclick="loadVolume(4)">Vol. IV &mdash; Apocrypha</button>
+    <button class="vol-btn"       onclick="loadVolume(5)">Vol. V &mdash; New Testament</button>
   </div>
 
   <!-- ======= BOOK SELECTOR & PAGE JUMP BAR =======
@@ -710,9 +710,9 @@
     // null = not yet available, shows "In Development" panel instead.
     const volumes = {
       1: 'V1Preamble.pdf',   // Vol. I — Torah (draft available)
-      2: null,               // Vol. II — Nevi'im (in production)
-      3: null,               // Vol. III — Ketuvim (not started)
-      4: null,               // Vol. IV — Apocrypha (not started)
+      2: 'V2Preamble.pdf',   // Vol. II — Nevi'im (in production)
+      3: 'V3Preamble.pdf',   // Vol. III — Ketuvim (not started)
+      4: 'V4Preamble.pdf',   // Vol. IV — Apocrypha (not started)
       5: 'V5Preamble.pdf'    // Vol. V — New Testament (draft available)
     };
 
@@ -735,14 +735,63 @@
         { name: 'Deuteronomy',   page: 393 }
       ],
 
-      // --- Vol. II — Nevi\'im (in production, no page numbers yet) ---
-      2: [],
+      // --- Vol. II — Nevi'im ---
+      2: [
+        { name: 'Joshua',       page: 5   },
+        { name: 'Judges',       page: 59  },
+        { name: '1 Samuel',     page: 113 },
+        { name: '2 Samuel',     page: 181 },
+        { name: '1 Kings',      page: 241 },
+        { name: '2 Kings',      page: 309 },
+        { name: 'Jeremiah',     page: 377 },
+        { name: 'Ezekiel',      page: 535 },
+        { name: 'Isaiah',       page: 647 },
+        { name: 'Hosea',        page: 819 },
+        { name: 'Joel',         page: 847 },
+        { name: 'Amos',         page: 859 },
+        { name: 'Obadiah',      page: 881 },
+        { name: 'Jonah',        page: 887 },
+        { name: 'Micah',        page: 893 },
+        { name: 'Nahum',        page: 911 },
+        { name: 'Habakkuk',     page: 919 },
+        { name: 'Zephaniah',    page: 929 },
+        { name: 'Haggai',       page: 939 },
+        { name: 'Zechariah',    page: 943 },
+        { name: 'Malachi',      page: 965 }
+      ],
 
-      // --- Vol. III — Ketuvim (not started) ---
-      3: [],
+      // --- Vol. III — Ketuvim ---
+      3: [
+        { name: 'Ruth',          page: 3   },
+        { name: 'Psalms',        page: 11  },
+        { name: 'Job',           page: 239 },
+        { name: 'Proverbs',      page: 325 },
+        { name: 'Ecclesiastes',  page: 419 },
+        { name: 'Song of Songs', page: 439 },
+        { name: 'Lamentations',  page: 457 },
+        { name: 'Daniel',        page: 479 },
+        { name: 'Esther',        page: 513 },
+        { name: 'Ezra',          page: 529 },
+        { name: 'Nehemiah',      page: 553 },
+        { name: '1 Chronicles',  page: 587 },
+        { name: '2 Chronicles',  page: 659 }
+      ],
 
-      // --- Vol. IV — Apocrypha (not started) ---
-      4: [],
+      // --- Vol. IV — Apocrypha ---
+      4: [
+        { name: 'Judith',                    page: 5   },
+        { name: 'Wisdom of Solomon',         page: 37  },
+        { name: 'Tobit',                     page: 89  },
+        { name: 'Sirach',                    page: 119 },
+        { name: 'Baruch',                    page: 251 },
+        { name: '1 Maccabees',              page: 269 },
+        { name: '2 Maccabees',              page: 339 },
+        { name: 'Additions to Esther',       page: 387 },
+        { name: 'Additions to Daniel',       page: 397 },
+        { name: 'Susanna',                   page: 399 },
+        { name: 'Bel and the Dragon',        page: 405 },
+        { name: 'Prayer of Azariah',         page: 409 }
+      ],
 
       // --- Vol. V — New Testament ---
       5: [
